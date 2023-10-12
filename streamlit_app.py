@@ -17,4 +17,4 @@ streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index))
 streamlit.dataframe(my_fruit_list)
 
 # putting a pick list of the fruits for the customer.
-fruits_selected = streamlit.multiselect.("Pick the fruit:", list(my_fruit_list.index),['Avocado','Strawberries'])
+fruits_selected = streamlit.multiselect("Pick the fruit:", list(my_fruit_list.index),['Avocado','Strawberries'])
