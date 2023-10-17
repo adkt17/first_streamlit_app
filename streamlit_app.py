@@ -31,6 +31,23 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
 
 import snowflake.connector
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+
+# Execute the SQL query
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+
+# Fetch the result
+my_data_row = my_cur.fetchone()
+
+# Close the cursor and connection
+my_cur.close()
+my_cnx.close()
+
+# Display the result in Streamlit
+streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
+
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 # my_cur = my_cnx.cursor()
 # my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
@@ -38,9 +55,9 @@ import snowflake.connector
 # streamlit.text("Hello from Snowflake:")
 # streamlit.text(my_data_row)
 
-try:
-    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    # Your Snowflake queries or operations here
-except Exception as e:
-    print(f"Error: {e}")                                            
+# try:
+#     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#     # Your Snowflake queries or operations here
+# except Exception as e:
+#     print(f"Error: {e}")                                            
 
