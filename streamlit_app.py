@@ -39,6 +39,19 @@ my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains")
 streamlit.dataframe(my_data_rows)
 
+new_fruit = streamlit.text_input('Add a new fruit to the list', '')
+
+# Check if the user has inputted a new fruit
+if new_fruit:
+    # Append the new fruit to the list of selected fruits
+    fruits_selected.append(new_fruit)
+    
+# Rest of your code remains unchanged
+fruits_to_show = my_fruit_list.loc[fruits_selected]
+streamlit.dataframe(fruits_to_show)
+
+streamlit.header("Fruityvice Fruit Advice!")
+
 # f_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 # streamlit.write('The user entered ', f_choice)
 
