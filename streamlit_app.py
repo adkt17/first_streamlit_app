@@ -46,7 +46,9 @@ if new_fruit:
     # Append the new fruit to the list of selected fruits
     fruits_selected.append(new_fruit)
 
-streamlit.text('Thanks for selecting ',new_fruit)
+if fruits_selected:
+    selected_fruit = fruits_selected[-1]  # Get the last selected fruit (newly added if any)
+    streamlit.text(f"Thanks for selecting '{selected_fruit}' fruit.")
 # # Rest of your code remains unchanged
 # fruits_to_show = my_fruit_list.loc[fruits_selected]
 # streamlit.dataframe(fruits_to_show)
